@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:conv="clr-namespace:AppBibliotecaUnopar.Converter;assembly=AppBibliotecaUnopar"
+             x:Class="AppBibliotecaUnopar.Views.NewItemPage"
+		     Title="Novo Livro">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteToImageConverter x:Key="convImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_action_navigation_cancel.png"/>
+                    <On Platform="UWP"  Value="Icons/ic_action_navigation_cancel.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Salvar" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="ic_action_navigation_check.png"/>
+                    <On Platform="UWP"  Value="Icons/ic_action_navigation_check.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Título" FontSize="Medium" />
+                <Entry Text="{Binding Livro.Titulo}" FontSize="Small" x:Name="TituloLivro"/>
+                <Label Text="Curso" FontSize="Medium" />
+                <Editor Text="{Binding Livro.Curso}" FontSize="Small" Margin="0" x:Name="CursoLivro"/>
+                <Label Text="Semestre" FontSize="Medium" />
+                <Editor Text="{Binding Livro.Semestre}" FontSize="Small" Margin="0" x:Name="SemestreLivro" Keyboard="Numeric"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Capa" FontSize="10" HorizontalOptions="Start"/>
+                    <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="2"  HorizontalOptions="End" x:Name="CapaLivro" Source="{Binding bytesFoto, Converter={StaticResource convImage}}"/>
+                    <Button Grid.Row="1" Grid.Column="0" Text="Camera" x:Name="BtnCamera" Command="{Binding Command_Camera}"/>
+                    <Button Grid.Row="2" Grid.Column="0" Text="Álbum" x:Name="BtnAlbum" Command="{Binding Command_Album}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppBibliotecaUnopar.Views.ItemDetailPage"
+             Title="{Binding Title}">
+    <ScrollView>
+    <StackLayout Spacing="20" Padding="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Capa" FontSize="10" HorizontalOptions="Start"/>
+                <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" x:Name="CapaLivro" HorizontalOptions="Center"/>
+            </Grid>
+
+        <Label Text="Título:" FontSize="Small" />
+        <Label Text="{Binding Livro.Titulo}" FontSize="Medium"/>
+        <Label Text="Curso:" FontSize="Small" />
+        <Label Text="{Binding Livro.Curso}" FontSize="Medium"/>
+        <Label Text="Semestre:" FontSize="Small" />
+        <Label Text="{Binding Livro.Semestre}" FontSize="Medium"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+
+        </Grid>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
